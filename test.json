@@ -1,0 +1,51 @@
+{
+    "label": "example site scrape",
+    "url": "http://www.example.com",
+    "saveFile": "data.json",
+    "job": [
+        {
+            "label": "home data",
+            "selector": "body .items",
+            "type": "list",
+            "save": "homeData",
+            "data": [
+                {
+                    "label": "title",
+                    "selector": ".title"
+                },
+                {
+                    "label": "link",
+                    "selector": ".link"
+                },
+                {
+                    "label": "image",
+                    "selector": ".image"
+                }
+            ]
+        },
+        {
+            "label": "detail data",
+            "type": "loop",
+            "use": "homeData",
+            "save": "detailData",
+            "each": {
+                "label": "detail page",
+                "url": "homeData.link",
+                "data": [
+                    {
+                        "label": "detail",
+                        "selector": "body .detail"
+                    },
+                    {
+                        "label": "detail image",
+                        "selector": "body .detail-image"
+                    },
+                    {
+                        "label": "detail title",
+                        "selector": "body .detail-title"
+                    }
+                ]
+            }
+        }
+    ]
+}
